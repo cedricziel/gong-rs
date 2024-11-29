@@ -1,0 +1,21 @@
+name: Publish to crates.io
+
+on:
+  push:
+    tags:
+      - '*'
+  # this is the "entry point" for manually running a workflow
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish to crates.io
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: publish
+        run: cargo publish --token "${CARGO_REGISTRY_TOKEN}"
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
