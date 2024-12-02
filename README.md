@@ -389,5 +389,5 @@ cargo doc --open
 
 ## Author
 
-
+mail@cedric-ziel.com
 
